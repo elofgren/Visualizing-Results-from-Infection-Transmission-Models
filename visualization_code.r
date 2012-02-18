@@ -99,5 +99,3 @@ smoothScatter(long_series[,2],long_series[,1],nbin=128,nrpoints=0,main="", xlab=
 single_trajectory <- epidemic_timeseries[sample(median_candidates, 1)]
 lines(single_trajectory, lwd = 3, col = "red")
 dev.off()
-
-lines(0:max_length,median_line,lwd=2,col="red") #Plot Median Line
