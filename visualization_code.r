@@ -1,9 +1,29 @@
+####################################################################################################
+# Source code: Visualizing Results from Transmission Models: A Case Against 'Confidence Intervals' #
+# Author: Eric Lofgren, MSPH (Eric.Lofgren@unc.edu)                                                #                       
+# Affiliation: Dept. of Epidemiology, UNC Gillings School of Global Public Health, Chapel Hill, NC #
+####################################################################################################
+
+##########################
+# Simulation Information #
+##########################
+# Simulation was run using EpiFire 2.33 (http://sourceforge.net/projects/epifire/)
+# Network data source: Largest connected component of Goodreau’s Faux Mesa High School from statnet
+# Simulation type: Percolation
+# Transmissibility: 0.5053
+# Patient zero count: 1
+# Number of runs: 1000
+# Results file: epidemic_timeseries.csv
+
 ###########################################################
 # Setting Global Variables, Modifying Data Sets as Needed #
 ###########################################################
-#Importing data sets into R
+#Download epidemic_timeseries.csv, move it to your R working directory
+#Import data into R
 epidemic_timeseries <- read.csv("epidemic_timeseries.csv", sep=",", header= F)
 
+#Create a matrix-based representation of the results, set a few details about the simulation
+#This will be used in Figure 3C and in the creation of other variables
 timeseries_matrix <- as.matrix(epidemic_timeseries)
 max_length <- 22 # Number of observations in epidemic_timeseries - 1
 realizations <- 1000 # How many realizations of the model were run
@@ -14,18 +34,9 @@ median_size<- median(epidemic_sizes)
 upper_size <- quantile(epidemic_sizes, probs = c(0.975), na.rm=TRUE)
 lower_size <- quantile(epidemic_sizes, probs = c(0.025), na.rm=TRUE)
 
-#Create a long dataset with all epidemics in a single column with a timestamp
-stack_series <- stack(epidemic_timeseries)
-timestamp <- data.frame(rep(seq(1,23),realizations))
-long_series<- cbind(stack_series,timestamp)
-long_series<- long_series[,-2] #delete extraneous column
-
-#Find the median and pointwise 2.5th and 97.5th quantiles for each simulated timestep
-median_line <- apply(epidemic_timeseries, 1, median, na.rm = TRUE)
-pointwise_CI <- apply(epidemic_timeseries, 1, quantile, probs = c(0.025, 0.975),  na.rm = TRUE)
-
 #Select possible realizations representing the median, 2.5th and 97.5th percentiles of epidemic size
-#Draw 4 of each
+#Draw 4 of each. More can be drawn, but plot becomes progressively less clear
+#These will be used for Figure 3A
 median_candidates <- which(epidemic_sizes == median_size)
 median_sample <- sample(median_candidates, 4)
 median_realizations<- epidemic_timeseries[median_sample]
@@ -37,6 +48,18 @@ upper_realizations<- epidemic_timeseries[upper_sample]
 lower_candidates <- which(epidemic_sizes == lower_size)
 lower_sample <- sample(lower_candidates, 4)
 lower_realizations<- epidemic_timeseries[lower_sample]
+
+#Find the median and pointwise 2.5th and 97.5th quantiles for each simulated timestep
+#This will be used for Figure 3B
+median_line <- apply(epidemic_timeseries, 1, median, na.rm = TRUE)
+pointwise_CI <- apply(epidemic_timeseries, 1, quantile, probs = c(0.025, 0.975),  na.rm = TRUE)
+
+#Create a long dataset with all epidemics in a single column with a timestamp
+#This will be used in Figure 3D
+stack_series <- stack(epidemic_timeseries)
+timestamp <- data.frame(rep(seq(1,23),realizations))
+long_series<- cbind(stack_series,timestamp)
+long_series<- long_series[,-2] #delete extraneous column
 
 ############
 # Figure 2 #
