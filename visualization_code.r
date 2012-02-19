@@ -112,9 +112,9 @@ pdf('smoothed.pdf')
 smoothScatter(long_series[,2],long_series[,1],nbin=128,nrpoints=0,main="", xlab="Time",ylab="Infections", ylim=c(0,20))
 dev.off()
 
-#########################
-# Supplemental Figure 1 #
-#########################
+#############
+# eFigure 1 #
+#############
 # Smooth greyscale scatterplot similar to Figure 3D, with the addition of a single overlayed trajectory of interest
 # In this example, the trajectory plotted is one of the candidate "median" realizations
 pdf('smooth_with_trajectory.pdf')
