@@ -1,5 +1,6 @@
 ####################################################################################################
-# Source code: Visualizing Results from Transmission Models: A Case Against 'Confidence Intervals' #
+# Source code: Visualizing Results from Infection Transmission Models:                             #
+# A Case Against 'Confidence Intervals'                                                            #
 # Author: Eric Lofgren, MSPH (Eric.Lofgren@unc.edu)                                                #                       
 # Affiliation: Dept. of Epidemiology, UNC Gillings School of Global Public Health, Chapel Hill, NC #
 ####################################################################################################
@@ -13,14 +14,14 @@
 # Transmissibility: 0.5053
 # Patient zero count: 1
 # Number of runs: 1000
-# Results file: epidemic_timeseries.csv
+# Results file: visualizing_data.csv
 
 ###########################################################
 # Setting Global Variables, Modifying Data Sets as Needed #
 ###########################################################
-#Download epidemic_timeseries.csv, move it to your R working directory
+#Download visualizing_data.csv, move it to your R working directory
 #Import data into R
-epidemic_timeseries <- read.csv("epidemic_timeseries.csv", sep=",", header= F)
+epidemic_timeseries <- read.csv("visualizing_data.csv", sep=",", header= F)
 
 #Create a matrix-based representation of the results, set a few details about the simulation
 #This will be used in Figure 3C and in the creation of other variables
