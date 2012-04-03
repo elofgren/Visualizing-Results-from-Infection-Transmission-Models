@@ -14,14 +14,14 @@
 # Transmissibility: 0.5053
 # Patient zero count: 1
 # Number of runs: 1000
-# Results file: visualizing_data.csv
+# Results file: visualizing_data.dat
 
 ###########################################################
 # Setting Global Variables, Modifying Data Sets as Needed #
 ###########################################################
-#Download visualizing_data.csv, move it to your R working directory
+#Download visualizing_data.dat, move it to your R working directory
 #Import data into R
-epidemic_timeseries <- read.csv("visualizing_data.csv", sep=",", header= F)
+epidemic_timeseries <- read.csv("visualizing_data.dat", sep=",", header= F)
 
 #Create a matrix-based representation of the results, set a few details about the simulation
 #This will be used in Figure 3C and in the creation of other variables
