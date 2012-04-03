@@ -19,4 +19,6 @@ eFigure1.pdf: A supplemental figure combining several methods of
 visualization to both show the full scope of simulation results and
 highlight specific trajectories of interest.
 
+Instructions for Use:
+Click on 'visualizing_data.dat' on the main list of files. Right click 'Raw' and save the file to your hard drive. Navigate back to the main page and click on 'visualizing_code.r'. Follow the same procedure to download the R code, or click 'Raw' to see the code to cut-and-paste directly into your R console. Change your R working directory to the directory where you downloaded the data file and run the supplied R code. Figures will be output as a series of .pdf files.
 
