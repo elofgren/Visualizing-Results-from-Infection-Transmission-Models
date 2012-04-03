@@ -15,7 +15,7 @@ simulation used as a worked data visualization example in the
 manuscript. This file is necessary to run the included R code, and to
 exactly replicate the results of the stochastic epidemic simulation.
 
-eFigure1.eps: A supplemental figure combining several methods of
+eFigure1.pdf: A supplemental figure combining several methods of
 visualization to both show the full scope of simulation results and
 highlight specific trajectories of interest.
 
