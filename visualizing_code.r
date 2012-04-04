@@ -130,3 +130,4 @@ single_trajectory <- epidemic_timeseries[sample(median_candidates, 1)]
 lines(single_trajectory, lwd = 3, col = "red")
 dev.off()
 
+#End of File
