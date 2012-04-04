@@ -19,6 +19,12 @@
 ###########################################################
 # Setting Global Variables, Modifying Data Sets as Needed #
 ###########################################################
+
+#Install and load necessary libraries
+install.packages("RColorBrewer")
+library(RColorBrewer)
+
+
 #Download visualizing_data.dat, move it to your R working directory
 #Import data into R
 epidemic_timeseries <- read.csv("visualizing_data.dat", sep=",", header= F)
@@ -123,3 +129,4 @@ smoothScatter(long_series[,2],long_series[,1],nbin=128,nrpoints=0,main="", xlab=
 single_trajectory <- epidemic_timeseries[sample(median_candidates, 1)]
 lines(single_trajectory, lwd = 3, col = "red")
 dev.off()
+
